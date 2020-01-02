@@ -10,6 +10,7 @@ setup(
     author_email='bcb@usgs.gov',
     license='unlicense',
     packages=['urb','state'],
+    data_files=[('urb', glob.glob('resources/*')),('state', glob.glob('resources/*'))],
     include_package_data=True,
     install_requires=[],
     zip_safe=False

@@ -4,6 +4,11 @@ import json
 from urb.urb import *
 
 json_schema = None
+try:
+    with open(os.path.join(os.path.dirname(__file__), './SFR_schema.json'), 'r') as json_schema_file:
+        json_schema = json.load(json_schema_file)
+except FileNotFoundError as e:
+    pass
 
 
 def process_1(

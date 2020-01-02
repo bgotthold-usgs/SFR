@@ -1,0 +1,48 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "required": [
+        "feature_id",
+        "feature_name",
+        "feature_description",
+        "feature_class"
+    ],
+    "properties": {
+        "feature_id": {
+            "$id": "#/properties/data/properties/feature_id",
+            "type": "string",
+            "default": "",
+            "examples": [
+                ""
+            ],
+            "pattern": "^(.*)$"
+        },
+        "feature_name": {
+            "$id": "#/properties/data/properties/feature_name",
+            "type": "string",
+            "default": "",
+            "examples": [
+                ""
+            ],
+            "pattern": "^(.*)$"
+        },
+        "feature_description": {
+            "$id": "#/properties/data/properties/feature_description",
+            "type": "string",
+            "default": "",
+            "examples": [
+                ""
+            ],
+            "pattern": "^(.*)$"
+        },
+        "feature_class": {
+            "$id": "#/properties/data/properties/feature_class",
+            "type": "string",
+            "default": "",
+            "examples": [
+                ""
+            ],
+            "pattern": "^(.*)$"
+        }
+    }
+}
