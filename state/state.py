@@ -36,7 +36,6 @@ def get_json_doc(data):
 
 
 def getGeoJsonFromShapefile(path):
-    print(glob.glob(path))
     # read the shapefile
     myshp = open(glob.glob("{}.shp".format(path))[0], "rb")
     mydbf = open(glob.glob("{}.dbf".format(path))[0], "rb")
