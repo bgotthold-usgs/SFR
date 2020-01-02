@@ -9,7 +9,7 @@ setup(
     author='Ben Gotthold',
     author_email='bcb@usgs.gov',
     license='unlicense',
-    packages=['urb'],
+    packages=['urb','state'],
     include_package_data=True,
     install_requires=[],
     zip_safe=False
