@@ -3,6 +3,7 @@ import os
 import json
 import copy
 from osgeo import ogr, osr
+import glob
 
 # for an SFR pipeline we must return a json doc in this form:
 # {
@@ -36,8 +37,8 @@ def get_json_doc(data):
 
 def getGeoJsonFromShapefile(path):
     # read the shapefile
-    myshp = open("{}.shp".format(path), "rb")
-    mydbf = open("{}.dbf".format(path), "rb")
+    myshp = open(glob.glob("{}.shp".format(path))[0], "rb")
+    mydbf = open(glob.glob("{}.dbf".format(path))[0], "rb")
     reader = shapefile.Reader(shp=myshp, dbf=mydbf)
 
     fields = reader.fields[1:]
