@@ -11,9 +11,6 @@ setup(
     license='unlicense',
     packages=['urb'],
     include_package_data=True,
-    install_requires=[
-        'gdal==3.0.1'
-        'pyshp==2.1.0'
-    ],
+    install_requires=[],
     zip_safe=False
 )
