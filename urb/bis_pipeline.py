@@ -1,7 +1,8 @@
 
 import os
 import json
-from urb.urb import *
+from urb.urb import processBuffer
+from resources.shapefile_helper import getGeoJsonFromShapefile
 
 json_schema = None
 try:
@@ -20,34 +21,26 @@ def process_1(
     previous_stage_result,
 ):
     count = 0
-
     file_name = file_name.split(".")[0]  # remove the .zip if applicable
     buffer = getGeoJsonFromShapefile(path + file_name)
 
     for b in buffer:
-
-        b["properties"]["feature_id"] = "Unified_Regions:id:{}".format(
-            b["properties"]["REG_NUM"]
-        )
-        before_change = copy.deepcopy(b["properties"])
-
-        b["properties"]["feature_name"] = b["properties"]["REG_NAME"]
-        b["properties"]["feature_description"] = "null"
-        b["properties"]["feature_class"] = "Unified Regions"
-        b["geometry"]["crs"] = {"type":"name","properties":{"name":"EPSG:5070"}}
-
-        ch_ledger.log_change_event(
-            b["properties"]["feature_id"],
-            'urb/process.py',
-            'process',
-            "URB Cleanup",
-            "Various properties addition/edits",
-            before_change,
-            b["properties"],
-        )
-
-        r = get_json_doc(b)
-        send_final_result(r)
+        data = processBuffer(b, change_log_function=ch_ledger.log_change_event)
+        result = get_json_doc(data)
+        send_final_result(result)
         count += 1
 
     return count
+
+
+def get_json_doc(data):
+    return {
+        "data": {
+            "feature_id": data["properties"]["feature_id"],
+            "feature_name": data["properties"]["feature_name"],
+            "feature_description": data["properties"]["feature_description"],
+            "feature_class": data["properties"]["feature_class"],
+        },
+        "row_id": data["properties"]["feature_id"],
+        "geometry":  data["geometry"]
+    }

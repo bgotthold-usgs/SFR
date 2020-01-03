@@ -9,9 +9,10 @@ setup(
     author='Ben Gotthold',
     author_email='bcb@usgs.gov',
     license='unlicense',
-    packages=['urb', 'state'],
-    data_files=[('urb', glob.glob('resources/*') + glob.glob('urb/*.py')),
-                ('state', glob.glob('resources/*') + glob.glob('state/*.py'))],
+    packages=['urb', 'state', 'resources'],
+    data_files=[('resources', glob.glob('resources/*.py')),
+                ('urb', glob.glob('resources/*.json') + glob.glob('urb/*.py')),
+                ('state', glob.glob('resources/*.json') + glob.glob('state/*.py'))],
     include_package_data=True,
     install_requires=[],
     zip_safe=False
