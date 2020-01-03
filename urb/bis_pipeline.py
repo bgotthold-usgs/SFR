@@ -14,16 +14,13 @@ except FileNotFoundError as e:
 
 def process_1(
     path,
-    file_name,
     ch_ledger,
     send_final_result,
     send_to_send_to_stage,
     previous_stage_result,
 ):
     count = 0
-    file_name = file_name.split(".")[0]  # remove the .zip if applicable
-    buffer = getGeoJsonFromShapefile(path + file_name)
-
+    buffer = getGeoJsonFromShapefile(path)
     for b in buffer:
         data = processBuffer(b, change_log_function=ch_ledger.log_change_event)
         result = get_json_doc(data)
