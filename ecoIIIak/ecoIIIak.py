@@ -2,14 +2,14 @@ import copy
 
 
 def processBuffer(b, change_log_function):
-    b["properties"]["feature_id"] = "Landscape_Conservation_Cooperatives:area_num:{}".format(
-        b["properties"]["Area_Num"]
+    b["properties"]["feature_id"] = "Ecoregion_3:us_l3code:{}".format(
+        b["properties"]["US_L3CODE"]
     )
     before_change = copy.deepcopy(b["properties"])
 
-    b["properties"]["feature_name"] = b["properties"]["area_names"]
+    b["properties"]["feature_name"] = b["properties"]["US_L3NAME"]
     b["properties"]["feature_description"] = "null"
-    b["properties"]["feature_class"] = "Landscape Conservation Cooperatives"
+    b["properties"]["feature_class"] = "Ecoregion III"
     b["geometry"]["crs"] = {"type": "name",
                             "properties": {"name": "EPSG:5070"}}
 
