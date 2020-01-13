@@ -1,7 +1,7 @@
 import os
 import json
 from county.county import processBuffer
-from resources.shapefile_helper import getGeoJsonFromShapefile
+from resources.shapefile_helper import getGeoJsonFromShapefile, get_json_doc
 
 json_schema = None
 try:
@@ -27,16 +27,3 @@ def process_1(
         count += 1
 
     return count
-
-
-def get_json_doc(data):
-    return {
-        "data": {
-            "feature_id": data["properties"]["feature_id"],
-            "feature_name": data["properties"]["feature_name"],
-            "feature_description": data["properties"]["feature_description"],
-            "feature_class": data["properties"]["feature_class"],
-        },
-        "row_id": data["properties"]["feature_id"],
-        "geometry":  data["geometry"]
-    }
