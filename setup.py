@@ -12,7 +12,7 @@ setup(
     packages=['urb', 'state', 'lcc', 'resources'],
     data_files=[('resources', glob.glob('resources/*.py')),
                 ('urb', glob.glob('resources/*.json') + glob.glob('urb/*.py')),
-                ('state', glob.glob('resources/*.json') + glob.glob('state/*.py'))
+                ('state', glob.glob('resources/*.json') + glob.glob('state/*.py')),
                 ('lcc', glob.glob('resources/*.json') + glob.glob('lcc/*.py'))],
     include_package_data=True,
     install_requires=[],
