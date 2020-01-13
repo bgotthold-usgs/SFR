@@ -16,3 +16,15 @@ def getGeoJsonFromShapefile(path):
         geom = sr.shape.__geo_interface__
         buffer.append(dict(type="Feature", geometry=geom, properties=atr))
     return buffer
+
+def get_json_doc(data):
+    return {
+        "data": {
+            "feature_id": data["properties"]["feature_id"],
+            "feature_name": data["properties"]["feature_name"],
+            "feature_description": data["properties"]["feature_description"],
+            "feature_class": data["properties"]["feature_class"],
+        },
+        "row_id": data["properties"]["feature_id"],
+        "geometry":  data["geometry"]
+    }
