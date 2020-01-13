@@ -1,7 +1,7 @@
 
 import os
 import json
-from state.state import processBuffer
+from lcc.lcc import processBuffer
 from resources.shapefile_helper import getGeoJsonFromShapefile, get_json_doc
 
 json_schema = None
